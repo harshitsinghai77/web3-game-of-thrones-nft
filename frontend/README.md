@@ -1,10 +1,5 @@
-# Wave at Me with Web3 👋
+# Game of Thrones NFT Collection 👋
 
-### Development Installation
+https://game-of-thrones-nft.netlify.app/
 
-1. Run `npm install` at the root of your directory
-2. Run `npm run start` to start the project
-
-https://buildspace-web3-wave-at-me.netlify.app/
-
-![alt text](https://i.ibb.co/vBgmQFn/wave.png)
+View Collection: https://rinkeby.rarible.com/collection/0x2Ab703e0b960698215AFd3Ec55c33A6CDcf31823

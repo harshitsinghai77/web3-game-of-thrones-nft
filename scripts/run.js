@@ -1,63 +1,15 @@
 const main = async () => {
   const [owner, randomPerson] = await hre.ethers.getSigners();
-  const waveContractFactory = await hre.ethers.getContractFactory("WavePortal");
-  const waveContract = await waveContractFactory.deploy({
-    value: hre.ethers.utils.parseEther("0.001"),
-  });
-  await waveContract.deployed();
+  const nftContractFactory = await hre.ethers.getContractFactory("ShadowNFT");
+  const nftContract = await nftContractFactory.deploy();
+  await nftContract.deployed();
 
-  console.log("Contract deployed to:", waveContract.address);
-  console.log("Contract deployed by:", owner.address);
+  console.log("Contract deployed to:", nftContract.address);
 
-  let contractBalance = await hre.ethers.provider.getBalance(
-    waveContract.address
+  let txn = await nftContract.makeAnEpicNFT(
+    "data:application/json;base64,eyJkZXNjcmlwdGlvbiI6IkFuIE5GVCBmcm9tIHRoZSBoaWdobHkgYWNjbGFpbWVkIGdhbWUgb2YgdGhyb25lcyBjb2xsZWN0aW9uIiwicXVvdGUiOiJNeSBzd29yZCBpcyB5b3VycywgaW4gdmljdG9yeSBhbmQgZGVmZWF0LCBmcm9tIHRoaXMgZGF5IHVudGlsIG15IGxhc3QgZGF5LiIsInF1b3RlQnkiOiJUaGVvbiBHcmV5am95IiwiaG91c2UiOiJIb3VzZSBHcmV5am95IG9mIFB5a2UiLCJpbWFnZSI6ImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QnBaRDBpYlhsemRtY2lJSGh0Ykc1elBTSm9kSFJ3T2k4dmQzZDNMbmN6TG05eVp5OHlNREF3TDNOMlp5SWdjSEpsYzJWeWRtVkJjM0JsWTNSU1lYUnBiejBpZUUxcGJsbE5hVzRnYldWbGRDSWdkbWxsZDBKdmVEMGlNQ0F3SURNMU1DQXpOVEFpSUdacGJHdzlJbmRvYVhSbElpQmpiR0Z6Y3owaWMzWm5MWFJsZUhRaVBqeHlaV04wSUhkcFpIUm9QU0l4TURBbElpQm9aV2xuYUhROUlqY3dKU0lnWm1sc2JEMGlZbXhoWTJzaUx6NDhkR1Y0ZENCNFBTSTFNQ1VpSUhrOUlqSTFKU0lnWTJ4aGMzTTlJbUpoYzJVaUlIUmxlSFF0WVc1amFHOXlQU0p0YVdSa2JHVWlQangwYzNCaGJpQjRQU0kxTUNVaUlHUjVQU0l4TGpKbGJTSStUWGtnYzNkdmNtUWdhWE1nZVc5MWNuTXNJR2x1SUhacFkzUnZjbmtnWVc1a0lHUmxabVZoZEN3OEwzUnpjR0Z1UGp4MGMzQmhiaUI0UFNJMU1DVWlJR1I1UFNJeExqSmxiU0krWm5KdmJTQjBhR2x6SUdSaGVTQjFiblJwYkNCdGVTQnNZWE4wSUdSaGVTNDhMM1J6Y0dGdVBqeDBjM0JoYmlCNFBTSTFNQ1VpSUdSNVBTSXhMakpsYlNJK0lEd3ZkSE53WVc0K1BIUnpjR0Z1SUhnOUlqY3dKU0lnWkhrOUlqRXVNbVZ0SWo0dElGUm9aVzl1SUVkeVpYbHFiM2s4TDNSemNHRnVQand2ZEdWNGRENDhMM04yWno0PSJ9"
   );
-  console.log(
-    "Contract balance:",
-    hre.ethers.utils.formatEther(contractBalance)
-  );
-
-  let waveCount;
-  waveCount = await waveContract.getTotalWaves();
-  console.log("waveCount before: ", waveCount.toString());
-
-  let waveTxn = await waveContract.wave("Something just like this");
-  await waveTxn.wait();
-
-  waveCount = await waveContract.getTotalWaves();
-  console.log("waveCount after: ", waveCount.toString());
-
-  newTxn = await waveContract.connect(randomPerson);
-
-  let wavetxn;
-  wavetxn = await newTxn.wave("Hello World1");
-  await wavetxn.wait();
-  wavetxn = await newTxn.wave("Hello World2");
-  await wavetxn.wait();
-
-  console.log("waveCount after random person: ", waveCount.toString());
-
-  let totalWavesAddress;
-  totalWavesAddress = await waveContract.getWavesByAddress(
-    randomPerson.address
-  );
-  console.log(
-    "totalWaves by: %s is ",
-    randomPerson.address,
-    totalWavesAddress.toString()
-  );
-
-  totalWavesAddress = await waveContract.getWavesByAddress(
-    "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266"
-  );
-  console.log(
-    "totalWaves by: %s is ",
-    waveContract.address,
-    totalWavesAddress.toString()
-  );
-
-  let allWaves = await waveContract.getAllWaves();
-  console.log(allWaves);
+  await txn.wait();
 };
 
 const runMain = async () => {

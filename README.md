@@ -1,5 +1,5 @@
-# Wave at Me with Web3 👋
+# Game of Thrones NFT Collection 👋
 
-https://buildspace-web3-wave-at-me.netlify.app/
+https://game-of-thrones-nft.netlify.app/
 
-![alt text](https://i.ibb.co/vBgmQFn/wave.png)
+View Collection: https://rinkeby.rarible.com/collection/0x2Ab703e0b960698215AFd3Ec55c33A6CDcf31823
