@@ -6,7 +6,6 @@ import { ethers } from "ethers";
 
 import contractABI from "./artifacts/abi.json";
 // Constants
-// const OPENSEA_LINK = "";
 // const TOTAL_MINT_COUNT = 50;
 const contractAddress = "0x2Ab703e0b960698215AFd3Ec55c33A6CDcf31823";
 
